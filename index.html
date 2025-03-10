@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <form id="form" action="https://formsubmit.co/juliaalbertim@ymail.com" method="POST">
+        <img class="logo" src="/logo_chapada (1).png">
+        <h2>Inscreva-se na palestra <br><br> "Genética na medicina: Onde estamos e para onde vamos?"<br> Pelo médico Diogo Cordseiro</h2>
+
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <!-- Configurações extras -->
+        <input type="hidden" name="_subject" value="Nova Inscrição">
+        <input type="hidden" name="_captcha" value="false"> <!-- Desativando CAPTCHA -->
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+        document.getElementById("form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Impede o envio padrão
+            const form = event.target;
+            
+    
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+            }).then(response => {
+                if (response.ok) {
+                    window.location.href = "obrigado.html"; 
+                }
+            }).catch(error => console.error("Erro no envio:", error));
+        });
+    </script>
+
+</body>
+</html>
