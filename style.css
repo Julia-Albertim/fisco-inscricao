@@ -7,6 +7,7 @@ body {
     background-color: #f4f4f4;
     color: #1e6d34;
     font-size: 13px;
+    font-weight: 550;
     margin: 0;
 }
 
@@ -32,16 +33,19 @@ form {
 h2 {
     text-align: center;
     margin-bottom: 15px;
+    font-weight: 200 ;
 }
 
 label {
     display: block;
     width: 100%;
     text-align: left; 
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 input {
+    
     width: calc(100% - 16px); 
     padding: 8px;
     margin-top: 5px;
@@ -50,9 +54,32 @@ input {
     box-sizing: border-box; 
 }
 
+.radio-group {
+  
+    display: flex;
+    justify-content: space-between; /* Mantém os botões espaçados */
+    width: 100%;
+   
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Espaçamento entre o rádio e o texto */
+    font-size: 14px;
+}
+
+.radio-group input[type="radio"] {
+    accent-color: #1e6d34; /* Define a cor do botão de rádio */
+    transform: scale(0.6); /* Aumenta um pouco o tamanho */
+    cursor: pointer;
+}
+
+
 
 button {
-    margin-top: 15px;
+    margin-top: 25px;
+    margin-bottom: 10px;
     width: 100%;
     padding: 10px;
     background: #1e6d34;

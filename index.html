@@ -8,29 +8,63 @@
 </head>
 <body>
 
-    <form action="https://api.staticforms.xyz/submit" method="post">
+    <form id="inscricaoForm">
         <img class="logo" src="logo_chapada (1).png">
-        <h2>Inscreva-se na palestra <br><br> "Genética na medicina: Onde estamos e para onde vamos?"<br> Pelo médico Diogo Soares</h2>
-
+        <h2>Inscreva-se na palestra: <br><br> "Genética na medicina: Onde estamos e para onde vamos?"<br> Pelo médico Diogo Soares</h2>
 
         <label for="name">Nome:</label>
         <input type="text" id="name" name="name" required>
 
+        <label for="telefone">Contato:</label>
+        <input type="text" id="telefone" name="telefone" required>
 
         <label for="email">E-mail:</label>
         <input type="email" id="email" name="email" required>
 
-        <!-- Configurações extras -->
-        <input type="hidden" name="_subject" value="Nova Inscrição">
-    
+        <label>Modalidade:</label>
+        <div class="radio-group">
+            <input type="radio" id="presencial" name="modalidade" value="Presencial" required>
+            <label for="presencial">Presencial</label>
+
+            <input type="radio" id="online" name="modalidade" value="Online" required>
+            <label for="online">Online</label>
+        </div>
 
         <button type="submit">Enviar</button>
-        <input type="hidden" name="accessKey" value="2eda4945-6f1a-4b95-bf28-6e01f10c9bb3"> 
-        <input type="hidden" name="redirectTo" value="https://julia-albertim.github.io/fisco-inscricao/obrigado.html">
-
-        
     </form>
 
+    <script>
+        document.getElementById("inscricaoForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); 
+            
+            const formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                message: "Modalidade: " + document.querySelector('input[name="modalidade"]:checked').value,
+                accessKey: "2eda4945-6f1a-4b95-bf28-6e01f10c9bb3",
+                _subject: "Nova Inscrição"
+            };
+
+            try {
+                let response = await fetch("https://api.staticforms.xyz/submit", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    window.location.href = "https://julia-albertim.github.io/fisco-inscricao/obrigado.html";
+                } else {
+                    alert("Erro ao enviar o formulário. Tente novamente.");
+                }
+            } catch (error) {
+                console.error("Erro:", error);
+                alert("Erro de conexão. Verifique sua internet.");
+            }
+        });
+    </script>
 
 </body>
 </html>
