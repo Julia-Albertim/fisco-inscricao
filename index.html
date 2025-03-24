@@ -15,8 +15,8 @@
         <label for="name">Nome:</label>
         <input type="text" id="name" name="name" required>
 
-        <label for="telefone">Contato:</label>
-        <input type="text" id="telefone" name="telefone" required>
+        <label for="phone">Contato:</label>
+        <input type="text" id="phone" name="phone" required>
 
         <label for="email">E-mail:</label>
         <input type="email" id="email" name="email" required>
@@ -40,6 +40,7 @@
             const formData = {
                 name: document.getElementById("name").value,
                 email: document.getElementById("email").value,
+                hone: document.getElementById("phone").value, 
                 message: "Modalidade: " + document.querySelector('input[name="modalidade"]:checked').value,
                 accessKey: "2eda4945-6f1a-4b95-bf28-6e01f10c9bb3",
                 _subject: "Nova Inscrição"
