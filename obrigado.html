@@ -13,7 +13,13 @@
     <div class="container">
         <h2>Obrigado por se inscrever!</h2>
         <p></p>
-        <a href="index.html">Voltar ao início</a>
+       
+                if (response.ok) {
+                    window.location.href = "https://inscricao-depressao-production.up.railway.app/";
+                } else {
+                    alert("Erro ao enviar o formulário. Tente novamente.");
+                }
+         
     </div>
 
 </body>
